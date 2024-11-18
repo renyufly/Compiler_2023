@@ -1,0 +1,465 @@
+.data
+str.0: .asciiz "19373385"
+str.1: .asciiz "2"
+str.2: .asciiz "3"
+str.3: .asciiz "4"
+str.4: .asciiz "5"
+str.5: .asciiz "6"
+str.6: .asciiz "7"
+str.7: .asciiz "8"
+str.8: .asciiz "9"
+
+.text
+j main
+
+fun_1:
+jr $ra
+jr $ra
+
+fun_2:
+jr $ra
+jr $ra
+
+fun_3:
+lw $t0,0($fp)
+sw $t0,0($sp)
+addiu $sp,$sp,-56
+sw $ra,4($sp)
+sw $fp,8($sp)
+addiu $fp,$sp,56
+jal fun_2
+lw $fp,8($sp)
+lw $ra,4($sp)
+addiu $sp,$sp,56
+jr $ra
+
+fun_4:
+lw $t0,0($fp)
+lw $t1,-4($fp)
+sle $t3,$t0,$t1
+li $t1,0
+beq $t3,$t1,Jump_3
+j Jump_2
+
+Jump_3:
+lw $t0,0($fp)
+lw $t1,-4($fp)
+slt $t4,$t0,$t1
+li $t1,0
+beq $t4,$t1,Jump_4
+j Jump_2
+
+Jump_4:
+lw $t0,0($fp)
+lw $t1,-4($fp)
+sgt $t5,$t0,$t1
+li $t1,0
+beq $t5,$t1,Jump_5
+j Jump_2
+
+Jump_5:
+lw $t0,0($fp)
+lw $t1,-4($fp)
+sge $t6,$t0,$t1
+li $t1,0
+beq $t6,$t1,Jump_6
+j Jump_2
+
+Jump_6:
+j Jump_1
+
+Jump_2:
+lw $t0,-4($fp)
+lw $t1,-8($fp)
+sle $t7,$t0,$t1
+li $t1,0
+beq $t7,$t1,Jump_9
+lw $t0,-4($fp)
+lw $t1,0($fp)
+seq $t8,$t0,$t1
+li $t1,0
+beq $t8,$t1,Jump_9
+lw $t0,0($fp)
+lw $t1,-8($fp)
+sne $t9,$t0,$t1
+li $t1,0
+beq $t9,$t1,Jump_9
+j Jump_8
+
+Jump_9:
+j Jump_7
+
+Jump_8:
+
+Jump_7:
+
+Jump_1:
+jr $ra
+
+fun_5:
+li $t0,2
+sw $t0,-8($fp)
+li $t0,1
+sw $t0,-12($fp)
+lw $t0,-16($fp)
+lw $t1,-12($fp)
+subu $t3,$t0,$t1
+lw $t0,-8($fp)
+sw $t0,0($sp)
+lw $t0,-12($fp)
+sw $t0,-4($sp)
+sw $t3,-8($sp)
+addiu $sp,$sp,-336
+sw $ra,4($sp)
+sw $fp,8($sp)
+addiu $fp,$sp,336
+jal fun_4
+lw $fp,8($sp)
+lw $ra,4($sp)
+addiu $sp,$sp,336
+lw $t0,-8($fp)
+lw $t1,-12($fp)
+addu $t4,$t0,$t1
+li $t1,0
+seq $t5,$t4,$t1
+li $t1,0
+beq $t5,$t1,Jump_13
+j Jump_12
+
+Jump_13:
+j Jump_10
+
+Jump_12:
+lw $t0,-8($fp)
+sw $t0,0($sp)
+lw $t0,-12($fp)
+sw $t0,-4($sp)
+lw $t0,-16($fp)
+sw $t0,-8($sp)
+addiu $sp,$sp,-336
+sw $ra,4($sp)
+sw $fp,8($sp)
+addiu $fp,$sp,336
+jal fun_4
+lw $fp,8($sp)
+lw $ra,4($sp)
+addiu $sp,$sp,336
+j Jump_11
+
+Jump_10:
+lw $t0,-12($fp)
+lw $t1,-12($fp)
+addu $t3,$t0,$t1
+li $t1,0
+sne $t4,$t3,$t1
+li $t1,0
+beq $t4,$t1,Jump_17
+j Jump_16
+
+Jump_17:
+j Jump_14
+
+Jump_16:
+lw $t0,-12($fp)
+sw $t0,0($sp)
+lw $t0,-8($fp)
+sw $t0,-4($sp)
+lw $t0,-16($fp)
+sw $t0,-8($sp)
+addiu $sp,$sp,-336
+sw $ra,4($sp)
+sw $fp,8($sp)
+addiu $fp,$sp,336
+jal fun_4
+lw $fp,8($sp)
+lw $ra,4($sp)
+addiu $sp,$sp,336
+lw $t0,-16($fp)
+li $t1,1
+seq $t5,$t0,$t1
+li $t1,0
+beq $t5,$t1,Jump_20
+j Jump_19
+
+Jump_20:
+j Jump_18
+
+Jump_19:
+li $t0,0
+sw $t0,-16($fp)
+
+Jump_18:
+j Jump_15
+
+Jump_14:
+jr $ra
+
+Jump_15:
+
+Jump_11:
+jr $ra
+
+fun_6:
+li $t0,2
+sw $t0,0($fp)
+li $t0,4
+sw $t0,0($fp)
+lw $t0,0($fp)
+move $t0,$t0
+sra $t1,$t0,0
+srl $t1,$t1,31
+addu $t1,$t1,$t0
+sra $t2,$t1,1
+subu $t2,$zero,$t2
+move $t3,$t2
+li $t1,1
+addu $t4,$t3,$t1
+li $t0,3
+mult $t0,$t4
+mflo $t5
+sw $t5,0($fp)
+li $t0,1
+li $t1,0
+sll $t1,$t1,2
+addu $t1,$t1,$fp
+sw $t0,-16($t1)
+li $t0,2
+li $t1,1
+sll $t1,$t1,2
+addu $t1,$t1,$fp
+sw $t0,-16($t1)
+li $t0,1
+li $t1,2
+sll $t1,$t1,2
+addu $t1,$t1,$fp
+sw $t0,-16($t1)
+li $t0,2
+li $t1,3
+sll $t1,$t1,2
+addu $t1,$t1,$fp
+sw $t0,-16($t1)
+lw $t0,0($fp)
+move $t0,$t0
+lw $t1,0($fp)
+div $t0,$t1
+mflo $t2
+move $t6,$t2
+lw $t0,0($fp)
+addu $t7,$t0,$t6
+sw $t7,0($fp)
+li $t0,0
+sw $t0,-20($fp)
+li $t0,3
+sw $t0,-20($fp)
+lw $t0,-20($fp)
+li $t1,5
+mult $t0,$t1
+mflo $t8
+sw $t8,-20($fp)
+jr $ra
+jr $ra
+
+fun_7:
+jr $ra
+
+funInt:
+li $t0,1
+li $t1,2
+mult $t0,$t1
+mflo $t3
+li $t1,1
+addu $t4,$t3,$t1
+li $t0,2
+sll $t1,$t4,2
+addu $t1,$t1,$fp
+sw $t0,-20($t1)
+li $t0,3
+li $t1,0
+sll $t1,$t1,2
+addu $t1,$t1,$fp
+sw $t0,-24($t1)
+li $t0,0
+sw $t0,-28($fp)
+li $t0,0
+sw $t0,-32($fp)
+li $t0,0
+sw $t0,-36($fp)
+lw $t0,-28($fp)
+li $t1,0
+seq $t5,$t0,$t1
+li $t1,0
+beq $t5,$t1,Jump_23
+j Jump_22
+
+Jump_23:
+j Jump_21
+
+Jump_22:
+li $t0,1
+sw $t0,-28($fp)
+
+Jump_21:
+
+Loop_24_begin:
+lw $t0,-36($fp)
+lw $t1,0($fp)
+slt $t3,$t0,$t1
+li $t1,0
+beq $t3,$t1,Jump_26
+j Jump_25
+
+Jump_26:
+j Loop_24_end
+
+Jump_25:
+lw $t0,-28($fp)
+lw $t1,-32($fp)
+addu $t4,$t0,$t1
+lw $t0,-36($fp)
+seq $t5,$t0,$t4
+li $t1,0
+beq $t5,$t1,Jump_30
+j Jump_29
+
+Jump_30:
+j Jump_27
+
+Jump_29:
+j Loop_24_end
+j Jump_28
+
+Jump_27:
+j Loop_24_begin
+
+Jump_28:
+lw $t0,-36($fp)
+li $t1,1
+addu $t3,$t0,$t1
+sw $t3,-36($fp)
+j Loop_24_begin
+
+Loop_24_end:
+
+Loop_31_begin:
+li $t0,0
+lw $t1,0($fp)
+seq $t3,$t0,$t1
+lw $t0,-36($fp)
+slt $t4,$t0,$t3
+li $t1,0
+beq $t4,$t1,Jump_33
+j Jump_32
+
+Jump_33:
+lw $t0,-36($fp)
+li $t1,0
+sge $t5,$t0,$t1
+li $t1,0
+beq $t5,$t1,Jump_34
+j Jump_32
+
+Jump_34:
+j Loop_31_end
+
+Jump_32:
+lw $t0,-36($fp)
+li $t1,0
+sne $t6,$t0,$t1
+li $t1,0
+beq $t6,$t1,Jump_37
+j Jump_36
+
+Jump_37:
+j Jump_35
+
+Jump_36:
+lw $t0,-36($fp)
+li $t1,2
+subu $t7,$t0,$t1
+sw $t7,-36($fp)
+
+Jump_35:
+lw $t0,-36($fp)
+li $t1,1
+subu $t3,$t0,$t1
+sw $t3,-36($fp)
+j Loop_31_begin
+
+Loop_31_end:
+li $v0,1
+jr $ra
+jr $ra
+
+main:
+move $fp,$sp
+addiu $sp,$sp,-224
+li $v0,5
+syscall
+sw $v0,0($fp)
+addiu $sp,$sp,-340
+sw $ra,4($sp)
+sw $fp,8($sp)
+addiu $fp,$sp,340
+jal fun_6
+lw $fp,8($sp)
+lw $ra,4($sp)
+addiu $sp,$sp,340
+addiu $t0,$fp,-16
+li $t1,1
+li $t2,8
+mult $t2,$t1
+mflo $t2
+addu $t0,$t0,$t2
+sw $t0,0($sp)
+addiu $sp,$sp,-48
+sw $ra,4($sp)
+sw $fp,8($sp)
+addiu $fp,$sp,48
+jal fun_7
+lw $fp,8($sp)
+lw $ra,4($sp)
+addiu $sp,$sp,48
+addiu $t0,$fp,-24
+sw $t0,0($sp)
+addiu $sp,$sp,-48
+sw $ra,4($sp)
+sw $fp,8($sp)
+addiu $fp,$sp,48
+jal fun_7
+lw $fp,8($sp)
+lw $ra,4($sp)
+addiu $sp,$sp,48
+la $a0,str.0
+li $v0,4
+syscall
+la $a0,str.1
+li $v0,4
+syscall
+la $a0,str.2
+li $v0,4
+syscall
+la $a0,str.3
+li $v0,4
+syscall
+la $a0,str.4
+li $v0,4
+syscall
+la $a0,str.5
+li $v0,4
+syscall
+la $a0,str.6
+li $v0,4
+syscall
+la $a0,str.7
+li $v0,4
+syscall
+la $a0,str.8
+li $v0,4
+syscall
+lw $a0,0($fp)
+li $v0,1
+syscall
+li $v0,10
+syscall
+li $v0,10
+syscall

@@ -1,0 +1,261 @@
+    <label> 1 begin:
+void fun_1()
+RETURN null
+RETURN null
+    <label> 1 end:
+    <label> 2 begin:
+void fun_2()
+param_def int a
+RETURN null
+RETURN null
+    <label> 2 end:
+    <label> 3 begin:
+void fun_3()
+param_def int a
+param_def int b
+param_push a
+call fun_2
+RETURN null
+    <label> 3 end:
+    <label> 4 begin:
+void fun_4()
+param_def int a
+param_def int b
+param_def int c
+temp&1 = a <= b
+if temp&1 == 0 then goto Jump_3
+goto Jump_2
+  <Jump_3>:
+temp&2 = a < b
+if temp&2 == 0 then goto Jump_4
+goto Jump_2
+  <Jump_4>:
+temp&3 = a > b
+if temp&3 == 0 then goto Jump_5
+goto Jump_2
+  <Jump_5>:
+temp&4 = a >= b
+if temp&4 == 0 then goto Jump_6
+goto Jump_2
+  <Jump_6>:
+goto Jump_1
+  <Jump_2>:
+    <label> 5 begin:
+temp&5 = b <= c
+if temp&5 == 0 then goto Jump_9
+temp&6 = b == a
+if temp&6 == 0 then goto Jump_9
+temp&7 = a != c
+if temp&7 == 0 then goto Jump_9
+goto Jump_8
+  <Jump_9>:
+goto Jump_7
+  <Jump_8>:
+    <label> 6 begin:
+    <label> 6 end:
+  <Jump_7>:
+    <label> 5 end:
+  <Jump_1>:
+RETURN null
+    <label> 4 end:
+    <label> 7 begin:
+void fun_5()
+param_def int a[]
+param_def int b[][2]
+var int t1 = 2
+var int t2 = 1
+var int t3
+temp&8 = t3 - t2
+param_push t1
+param_push t2
+param_push temp&8
+call fun_4
+temp&9 = t1 + t2
+temp&10 = temp&9 == 0
+if temp&10 == 0 then goto Jump_13
+goto Jump_12
+  <Jump_13>:
+goto Jump_10
+  <Jump_12>:
+    <label> 8 begin:
+param_push t1
+param_push t2
+param_push t3
+call fun_4
+    <label> 8 end:
+goto Jump_11
+  <Jump_10>:
+temp&11 = t2 + t2
+temp&12 = temp&11 != 0
+if temp&12 == 0 then goto Jump_17
+goto Jump_16
+  <Jump_17>:
+goto Jump_14
+  <Jump_16>:
+    <label> 9 begin:
+param_push t2
+param_push t1
+param_push t3
+call fun_4
+temp&13 = t3 == 1
+if temp&13 == 0 then goto Jump_20
+goto Jump_19
+  <Jump_20>:
+goto Jump_18
+  <Jump_19>:
+    <label> 10 begin:
+t3 = 0
+    <label> 10 end:
+  <Jump_18>:
+    <label> 9 end:
+goto Jump_15
+  <Jump_14>:
+    <label> 11 begin:
+RETURN null
+    <label> 11 end:
+  <Jump_15>:
+  <Jump_11>:
+RETURN null
+    <label> 7 end:
+    <label> 12 begin:
+void fun_6()
+var int var_1
+var_1 = 2
+var_1 = 4
+temp&14 = var_1 / -2
+temp&15 = temp&14 + 1
+temp&16 = 3 * temp&15
+var_1 = temp&16
+array int a[2][2] <has InitVal>
+a[0] = 1
+a[1] = 2
+a[2] = 1
+a[3] = 2
+temp&17 = var_1 / var_1
+temp&18 = var_1 + temp&17
+var_1 = temp&18
+    <label> 13 begin:
+var int var_1
+array int var_2[23]
+var_1 = 0
+var_1 = 3
+temp&19 = var_1 * 5
+var_1 = temp&19
+    <label> 13 end:
+RETURN null
+RETURN null
+    <label> 12 end:
+    <label> 14 begin:
+void fun_7()
+param_def int a[]
+RETURN null
+    <label> 14 end:
+    <label> 15 begin:
+int funInt()
+param_def int a
+param_def int b[][2]
+array int var_1[2][2]
+array int var_2[1]
+temp&20 = 1 * 2
+temp&21 = temp&20 + 1
+var_1[temp&21] = 2
+var_2[0] = 3
+var int c = 0
+var int d = 0
+var int i = 0
+temp&22 = c == 0
+if temp&22 == 0 then goto Jump_23
+goto Jump_22
+  <Jump_23>:
+goto Jump_21
+  <Jump_22>:
+    <label> 16 begin:
+c = 1
+    <label> 16 end:
+  <Jump_21>:
+  <Loop_24_begin>:
+temp&23 = i < a
+if temp&23 == 0 then goto Jump_26
+goto Jump_25
+  <Jump_26>:
+goto Loop_24_end
+  <Jump_25>:
+    <label> 17 begin:
+temp&24 = c + d
+temp&25 = i == temp&24
+if temp&25 == 0 then goto Jump_30
+goto Jump_29
+  <Jump_30>:
+goto Jump_27
+  <Jump_29>:
+    <label> 18 begin:
+goto Loop_24_end
+    <label> 18 end:
+goto Jump_28
+  <Jump_27>:
+    <label> 19 begin:
+goto Loop_24_begin
+    <label> 19 end:
+  <Jump_28>:
+temp&26 = i + 1
+i = temp&26
+    <label> 17 end:
+goto Loop_24_begin
+  <Loop_24_end>:
+  <Loop_31_begin>:
+temp&27 = 0 == a
+temp&28 = i < temp&27
+if temp&28 == 0 then goto Jump_33
+goto Jump_32
+  <Jump_33>:
+temp&29 = i >= 0
+if temp&29 == 0 then goto Jump_34
+goto Jump_32
+  <Jump_34>:
+goto Loop_31_end
+  <Jump_32>:
+    <label> 20 begin:
+temp&30 = i != 0
+if temp&30 == 0 then goto Jump_37
+goto Jump_36
+  <Jump_37>:
+goto Jump_35
+  <Jump_36>:
+    <label> 21 begin:
+temp&31 = i - 2
+i = temp&31
+    <label> 21 end:
+  <Jump_35>:
+temp&32 = i - 1
+i = temp&32
+    <label> 20 end:
+goto Loop_31_begin
+  <Loop_31_end>:
+RETURN 1
+RETURN null
+    <label> 15 end:
+    <label> 22 begin:
+ main_begin
+var int n
+getint n
+call fun_6
+array int a[2][2]
+array int b[2]
+param_push a[1][2]
+call fun_7
+param_push b
+call fun_7
+printf "19373385"
+printf "2"
+printf "3"
+printf "4"
+printf "5"
+printf "6"
+printf "7"
+printf "8"
+printf "9"
+printf n
+RETURN 0
+RETURN null
+    <label> 22 end:
+ main_end
